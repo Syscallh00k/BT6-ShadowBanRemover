@@ -5,7 +5,7 @@ public:
 };
 void thread()
 {
-    MessageBox(NULL, L"Removing Shadow Ban", L"Legend is god", MB_OK);
+    MessageBox(NULL, L"Removing Shadow Ban", L"Legend is cool", MB_OK);
     static bool once = false;
     while (true)
     {
@@ -14,18 +14,18 @@ void thread()
         auto getPlayer = reinterpret_cast<uintptr_t(*)()>(process + 4418560);
         auto getisflaged = reinterpret_cast<bool(*)(uintptr_t)>(process + 12087712);
         if((uintptr_t)getPlayer() > 0x100 && !once)
-            MessageBox(NULL, (L"Found Main Player"), L"Legend is god", MB_OK);
+            MessageBox(NULL, (L"Found Main Player"), L"Legend is cool", MB_OK);
 
         if (getisflaged(getPlayer()) && !once)
-            MessageBox(NULL, L"Account Status Flagged", L"Legend is god", MB_OK);
+            MessageBox(NULL, L"Account Status Flagged", L"Legend is cool", MB_OK);
 
         RemoveFlagged(getPlayer(), false);
 
-        if (getisflaged(getPlayer()) && !once)
-            MessageBox(NULL, L"Account Status Flagged", L"Legend is god", MB_OK);
+        if (getisflaged(getPlayer()) && !once) // this was a test to see if the RemoveFlagged worked 
+            MessageBox(NULL, L"Account Status Flagged", L"Legend is cool", MB_OK);
 
         if(!once)
-            MessageBox(NULL, L"Removed Shadow Ban", L"Legend is god", MB_OK);
+            MessageBox(NULL, L"Removed Shadow Ban", L"Legend is cool", MB_OK);
        (*reinterpret_cast<bool*>(getPlayer() + 0x99)) = 1; // unlock all towners
         (*reinterpret_cast<bool*>(getPlayer() + 0x98)) = 1; // unlock all updateds
 
